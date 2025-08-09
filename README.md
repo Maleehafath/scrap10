@@ -1,96 +1,57 @@
 <img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
 
-# [Project Name] 🎯
+# Scrap10 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: [Git team]
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Member 1: [Maleeha Fathima] - [CUSAT]
+- Member 2: [Nysa Shajan Babu] - [CUSAT]
 
 ### Project Description
-[2-3 lines about what your project does]
+[Our program displays a sign up page which is impossible to complete due to the recurring countdown]
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Lack of patience 
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+Gives enough time or more to reflect
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
-
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+- [html, css, java script]
+- [react]
+- [esbuild, gensync]
+- [github, vs code]
 
 ### Implementation
 For Software:
 # Installation
-[commands]
+npm install
 
 # Run
-[commands]
+npm run dev
 
 ### Project Documentation
 For Software:
 
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+<img width="1305" height="641" alt="image" src="https://github.com/user-attachments/assets/7f7f4398-1cbc-458b-a639-6a2beb8f42d1" />
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+<img width="1276" height="573" alt="image" src="https://github.com/user-attachments/assets/910c0ccd-6b90-4fca-b18d-12b955bf4c1f" />
 
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
 
-For Hardware:
+<img width="1149" height="512" alt="image" src="https://github.com/user-attachments/assets/cf1d6dad-9f73-4eba-9459-2257dddc6047" />
 
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- Maleeha Fathima
+- Nysa Shajan Babu
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
