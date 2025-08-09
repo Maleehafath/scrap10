@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        .counter {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 120px;
+            color: white;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            const [count, setCount] = React.useState(1);
+
+            React.useEffect(() => {
+                // Prevent window close until counter reaches 10
+                const handleBeforeUnload = (e) => {
+                    if (count < 10) {
+                        e.preventDefault();
+                        e.returnValue = 'Wait until the counter reaches 10!';
+                        return 'Wait until the counter reaches 10!';
+                    }
+                };
+                window.addEventListener('beforeunload', handleBeforeUnload);
+
+                // Reset counter on any interaction
+                const handleInteraction = () => {
+                    setCount(1);
+                };
+                window.addEventListener('click', handleInteraction);
+                window.addEventListener('touchstart', handleInteraction);
+                window.addEventListener('keydown', handleInteraction);
+
+                // Counter logic
+                const timer = setInterval(() => {
+                    setCount(prevCount => {
+                        if (prevCount >= 10) {
+                            setTimeout(() => window.close(), 500); // Short delay before closing
+                            return 10;
+                        }
+                        return prevCount + 1;
+                    });
+                }, 1000);
+
+                // Cleanup event listeners and timer
+                return () => {
+                    clearInterval(timer);
+                    window.removeEventListener('beforeunload', handleBeforeUnload);
+                    window.removeEventListener('click', handleInteraction);
+                    window.removeEventListener('touchstart', handleInteraction);
+                    window.removeEventListener('keydown', handleInteraction);
+                };
+            }, [count]);
+
+            return (
+                <div className="counter">
+                    {count}
+                </div>
+            );
+        }
+
+        // Render the App component
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(
+            <React.StrictMode>
+                <App />
+            </React.StrictMode>
+        );
+    </script>
+</body>
+</html>
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <React.StrictMode>
+                <App />
+            </React.StrictMode>
+        );
+    </script>
+</body>
+</html>

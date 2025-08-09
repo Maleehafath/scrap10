@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 0 2rem;
+        }
+
+        .signup-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background: #764ba2;
+        }
+
+        .bubble-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 64px;
+            color: white;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        .title-description {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            margin-top: 1rem;
+            line-height: 1.4;
+            opacity: 0.9;
+        }
+
+        .title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .countdown-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .blur-background {
+            filter: blur(8px);
+            transition: filter 0.3s ease;
+        }
+
+        .counter {
+            font-size: 96px;
+            color: white;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        .reset-message {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff3333;
+            font-size: 32px;
+            font-family: 'Fredoka One', cursive;
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            letter-spacing: 1px;
+        }
+
+        .reset-message.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+    
+    <div class="title-container">
+        <div class="bubble-title">Hello Folks!</div>
+        <div class="title-description">Sitting idle? Sign up and discover what awaits you.</div>
+    </div>
+
+    <script>
+        function showCountdown() {
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'countdown-overlay';
+            
+            // Create reset message
+            const resetMessage = document.createElement('div');
+            resetMessage.className = 'reset-message';
+            resetMessage.textContent = 'Oh ooh!';
+            overlay.appendChild(resetMessage);
+            
+            // Create counter
+            const counter = document.createElement('div');
+            counter.className = 'counter';
+            overlay.appendChild(counter);
+            
+            // Add to page and blur background
+            document.body.appendChild(overlay);
+            overlay.style.display = 'flex';
+            document.querySelector('.signup-container').classList.add('blur-background');
+            document.querySelector('.title-container').classList.add('blur-background');
+            
+            // Initialize counter
+            let count = 1;
+            counter.textContent = count;
+            
+            // Start countdown
+            const timer = setInterval(() => {
+                count++;
+                counter.textContent = count;
+                
+                if (count === 11) {
+                    window.close();
+                }
+            }, 1000);
+            
+            // Handle interactions
+            function resetCount() {
+                count = 1;
+                counter.style.opacity = '0';
+                
+                // Show reset message
+                resetMessage.classList.add('show');
+                
+                // Hide message and show counter after 1 second
+                setTimeout(() => {
+                    resetMessage.classList.remove('show');
+                    counter.textContent = count;
+                    counter.style.opacity = '1';
+                }, 1000);
+            }
+            
+            overlay.addEventListener('click', resetCount);
+            document.addEventListener('keydown', resetCount);
+            document.addEventListener('touchstart', resetCount);
+            
+            // Prevent closing
+            function preventClose(e) {
+                if (count < 11) {
+                    e.preventDefault();
+                    e.returnValue = '';
+                    return '';
+                }
+            }
+            
+            window.addEventListener('beforeunload', preventClose);
+        }
+
+        // Listen for input in form fields
+        const inputFields = document.querySelectorAll('input');
+        
+        inputFields.forEach(input => {
+            input.addEventListener('input', function() {
+                showCountdown();
+            });
+        });
+
+        // Also listen for form submission
+        document.addEventListener('submit', function(e) {
+            e.preventDefault();
+            showCountdown();
+        });
+    </script>
+</body>
+</html>
